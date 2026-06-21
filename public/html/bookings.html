@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Bookings</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bookings.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ol>
+                <li class="navbar-item"><a href="home.html">Home</a></li>
+                <li class="navbar-item"><a href="reservation.html">Reservation</a></li>
+                <li class="navbar-item"><a href="billing.html">Billing Page</a></li>
+                <li class="navbar-item"><a href="history.html">History</a></li>
+                <li class="navbar-item"><a href="bookings.html" class="active">Bookings</a></li>
+                <li class="navbar-item"><a href="support.html">Contact Support</a></li>
+            </ol>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 id="container-hd">Your Active Bookings</h1>
+
+        <div id="bookings-box">
+            <div class="booking-card" id="active-card">
+                <div class="booking-details">
+                    <h3 id="dyn-room">No Active Booking</h3>
+                    <p class="booking-meta">Booking ID: <strong id="dyn-id">#CY-0000</strong></p>
+
+                    <div class="booking-dates">
+                        <div>
+                            <span>Check-In</span>
+                            <p id="dyn-checkin">N/A</p>
+                        </div>
+                        <div class="arrow">➔</div>
+                        <div>
+                            <span>Check-Out</span>
+                            <p id="dyn-checkout">N/A</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-actions">
+                    <span class="status-badge upcoming">Upcoming Trip</span>
+                    <button class="btn-action cancel" onclick="cancelBooking()">Cancel Booking</button>
+                </div>
+            </div>
+
+            <p id="no-bookings" style="display:none; color: #C5FFF8; text-align: center; font-family: 'Ubuntu'; margin-top: 10px;">
+                You have no active or upcoming reservations.
+            </p>
+        </div> </div> <script>
+        // 1. Fetch saved choices from the reservation screen
+        const roomName = localStorage.getItem('roomName');
+        const checkin = localStorage.getItem('checkin') || 'N/A';
+        const checkout = localStorage.getItem('checkout') || 'N/A';
+
+        const card = document.getElementById('active-card');
+        const fallbackMsg = document.getElementById('no-bookings');
+
+        if (roomName) {
+            const randomID = localStorage.getItem('bookingID') || '#CY-' + Math.floor(1000 + Math.random() * 9000);
+            localStorage.setItem('bookingID', randomID);
+
+            document.getElementById('dyn-room').innerText = roomName;
+            document.getElementById('dyn-id').innerText = randomID;
+            document.getElementById('dyn-checkin').innerText = checkin;
+            document.getElementById('dyn-checkout').innerText = checkout;
+        } else {
+            card.style.display = 'none';
+            fallbackMsg.style.display = 'block';
+        }
+
+        function cancelBooking() {
+            if (confirm("Are you sure you want to cancel your upcoming reservation?")) {
+                alert("Your reservation has been officially cancelled.");
+
+                localStorage.removeItem('roomName');
+                localStorage.removeItem('bookingID');
+                localStorage.removeItem('checkin');
+                localStorage.removeItem('checkout');
+                localStorage.removeItem('nights');
+                localStorage.removeItem('roomRate');
+
+                card.style.display = 'none';
+                fallbackMsg.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>
