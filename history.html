@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/history.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ol>
+                <li class="navbar-item"><a href="home.html">Home</a></li>
+                <li class="navbar-item"><a href="reservation.html">Reservation</a></li>
+                <li class="navbar-item"><a href="billing.html">Billing Page</a></li>
+                <li class="navbar-item"><a href="history.html" class="active">History</a></li>
+                <li class="navbar-item"><a href="bookings.html">Bookings</a></li>
+                <li class="navbar-item"><a href="support.html">Contact Support</a></li>
+            </ol>
+        </nav>
+    </header>
+
+   <div class="container">
+    <h1 id="container-hd">Your Booking History</h1>
+    
+    <div id="history-box">
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Room Category</th>
+                    <th>Duration</th>
+                    <th>Total Paid</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="history-rows"></tbody>
+        </table>
+        
+        <p id="no-history" style="display:none; color: #C5FFF8; text-align: center; font-family: 'Ubuntu'; margin-top: 20px;">
+            No past booking records found on this account.
+        </p>
+    </div>
+</div>
+
+<script>
+    // 1. Grab saved array data 
+    const historyData = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+    const tableBody = document.getElementById('history-rows');
+    const fallbackText = document.getElementById('no-history');
+
+    if (historyData.length === 0) {
+        fallbackText.style.display = 'block';
+    } else {
+        for (let i = historyData.length - 1; i >= 0; i--) {
+            const stay = historyData[i];
+
+            const rowHTML = `
+                <tr>
+                    <td>${stay.id}</td>
+                    <td>${stay.room}</td>
+                    <td>${stay.duration}</td>
+                    <td>${stay.price}</td>
+                    <td><span class="status completed">${stay.status}</span></td>
+                </tr>
+            `;
+
+            tableBody.innerHTML += rowHTML;
+        }
+    }
+</script>
+</body>
+</html>
