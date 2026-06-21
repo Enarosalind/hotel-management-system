@@ -1,0 +1,141 @@
+#container-hd {
+    padding: 10px;
+    color: white;
+}
+
+.container {
+    background-image: url('../assets/mountain.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+}
+
+#billing-box {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    height: auto;
+    width: 50vw;
+    min-width: 400px;
+    background-color: blue;
+    border-radius: 4px;            
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    color: #ffffff;
+}
+
+.invoice-table th, 
+.invoice-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #1363DF;
+}
+
+.invoice-table th {
+    color: #C5FFF8;
+    font-size: 16px;
+    border-bottom: 2px solid #C5FFF8;
+}
+
+.total-row {
+    font-size: 18px;
+    color: #C5FFF8;
+}
+
+.total-row td {
+    border-top: 2px solid #C5FFF8;
+    border-bottom: none;
+    padding-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    color: #C5FFF8;
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 8px;            
+}
+
+select {
+    border: 2px solid #1363DF;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 4px;
+    padding: 5px 10px;
+    outline: none;
+    height: 40px;
+    width: 100%;                   
+}
+
+input[type=submit] {
+    width: 180px;                  
+    height: 40px;                  
+    background-color: #FF3B3B;
+    color: #DFF6FF;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 25px 0 0 auto;
+    display: block;
+}
+
+input[type=submit]:hover {
+    background-color: #d62828;
+}
+
+#print-btn {
+    background-color: #1363DF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+
+@media print {
+    body *, .navbar, #payment-form, #print-btn, #container-hd {
+        display: none !important; 
+    }
+    .container {
+        background-image: none !important;
+        height: auto;
+    }
+    #billing-box {
+        display: block !important;
+        width: 100% !important;
+        background-color: white !important;
+        color: black !important;
+        padding: 0;
+    }
+    .invoice-table {
+        color: black !important;
+        width: 100%;
+    }
+    .invoice-table th, .invoice-table td {
+        border-bottom: 1px solid #ccc !important;
+        color: black !important;
+    }
+    
+    #print-payment-method-view {
+        display: block !important;
+        color: black !important;
+    }
+}

@@ -1,1 +1,45 @@
-
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+}
+main h1 {
+    font-size: 48px;
+    color: #333;
+    margin-bottom: 20px;
+}
+main p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+.book-btn {
+    background-color: #FF5B5B;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.book-btn:hover {
+    background-color: #FF3B3B;
+}
+.main-class {
+    background-image: url('../assets/inn.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.main-class h1{
+    color: white;
+}
+.main-class p{
+    color: white;
+}
