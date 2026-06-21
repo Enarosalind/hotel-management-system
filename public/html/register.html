@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+    <form id="form-box" action="/register" method="post">
+
+        <label for="nm">Customer Name</label>
+        <input type="text" name="nm" id="nm" placeholder="enter name here..." required>
+
+        <label for="addr">Email Address</label>
+        <input type="email" name="addr" id="addr" placeholder="enter address here..." required>
+
+        
+        <label for="ph-no">Phone Number</label>
+        <div class="phone-container">
+            <select name="phone-code" id="phone-code" required>
+                <option value="+1">🇺🇸 +1 (US)</option>
+                <option value="+44">🇬🇧 +44 (UK)</option>
+                <option value="+91" selected>🇮🇳 +91 (IN)</option>
+                <option value="+61">🇦🇺 +61 (AU)</option>
+                <option value="+971">🇦🇪 +971 (UAE)</option>
+            </select>
+            <input type="tel" name="ph-no" id="ph-no" placeholder="enter phone number here..." required>
+        </div>
+
+        
+        <label for="psw">Password</label>
+        <input type="password" name="psw" id="psw" placeholder="enter password here..."
+            pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{15,}"
+            title="Password must be at least 15 characters long, contain at least one number, and one special character."
+            required>
+
+        <label for="cpsw">Confirm Password</label>
+        <input type="password" name="cpsw" id="cpsw" placeholder="confirm your password..." required>
+
+        <input type="submit" value="Register">
+    </form>
+    </div>
+    <script>
+        document.getElementById('form-box').addEventListener('submit', function(event) {
+            event.preventDefault();
+            window.location.href = "home.html";
+        });
+    </script>
+</body>
+</body>
+</html>
