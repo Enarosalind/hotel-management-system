@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/billing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ol>
+                <li class="navbar-item"><a href="home.html">Home</a></li>
+                <li class="navbar-item"><a href="reservation.html">Reservation</a></li>
+                <li class="navbar-item"><a href="billing.html" class="active">Billing Page</a></li>
+                <li class="navbar-item"><a href="history.html">History</a></li>
+                <li class="navbar-item"><a href="bookings.html">Bookings</a></li>
+                <li class="navbar-item"><a href="support.html">Contact Support</a></li>
+            </ol>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 id="container-hd">Payment Summary</h1>
+        
+        <div id="billing-box">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="invoice-desc">Loading reservation...</td>
+                        <td id="invoice-room-total">₹0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Service Charge</td>
+                        <td>₹500.00</td>
+                    </tr>
+                    <tr>
+                        <td>GST (12%)</td>
+                        <td id="invoice-tax">₹0.00</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>Total Amount Due</td>
+                        <td id="invoice-grand-total">₹0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="print-payment-method-view" style="display: none; font-family: 'Ubuntu'; margin-top: 20px;">
+                <p><strong>Payment Method Selected:</strong> <span id="printed-method">None</span></p>
+            </div>
+
+            <button id="print-btn" onclick="prepareAndPrint()">Print Statement</button>
+
+            <form id="payment-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="payment-method">Select Payment Method</label>
+                    <select id="payment-method" required>
+                        <option value="UPI (GPay / PhonePe / Paytm)">UPI (GPay / PhonePe / Paytm)</option>
+                        <option value="Credit / Debit Card">Credit / Debit Card</option>
+                        <option value="Net Banking">Net Banking</option>
+                    </select>
+                </div>
+
+                <input type="submit" value="Proceed to Pay">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const roomName = localStorage.getItem('roomName') || "Standard Digital Room";
+        const nights = parseInt(localStorage.getItem('nights')) || 1;
+        const roomRate = parseFloat(localStorage.getItem('roomRate')) || 4000;
+        const checkin = localStorage.getItem('checkin') || 'N/A';
+        const checkout = localStorage.getItem('checkout') || 'N/A';
+
+        const roomTotal = roomRate * nights;
+        const serviceCharge = 500;
+        const gst = Math.round((roomTotal + serviceCharge) * 0.12);
+        const grandTotal = roomTotal + serviceCharge + gst;
+
+        document.getElementById('invoice-desc').innerText = `${roomName} (${nights} Nights)`;
+        document.getElementById('invoice-room-total').innerText = `₹${roomTotal.toLocaleString('en-IN')}.00`;
+        document.getElementById('invoice-tax').innerText = `₹${gst.toLocaleString('en-IN')}.00`;
+        document.getElementById('invoice-grand-total').innerText = `₹${grandTotal.toLocaleString('en-IN')}.00`;
+
+        function prepareAndPrint() {
+            const selectElement = document.getElementById('payment-method');
+            const chosenText = selectElement.options[selectElement.selectedIndex].text;
+            document.getElementById('printed-method').innerText = chosenText;
+            window.print();
+        }
+
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const newHistoryEntry = {
+                id: '#CY-' + Math.floor(1000 + Math.random() * 9000),
+                room: roomName,
+                duration: `${checkin} to ${checkout} (${nights} Nights)`,
+                price: `₹${grandTotal.toLocaleString('en-IN')}.00`,
+                status: 'Completed'
+            };
+
+            let totalHistory = JSON.parse(localStorage.getItem('bookingHistory')) || [];
+            totalHistory.push(newHistoryEntry);
+            localStorage.setItem('bookingHistory', JSON.stringify(totalHistory));
+
+            localStorage.removeItem('roomName');
+            localStorage.removeItem('nights');
+            localStorage.removeItem('roomRate');
+
+            alert("Payment Processed! Your reservation is officially logged.");
+            window.location.href = "history.html";
+        });
+    </script>
+</body>
+</html>
