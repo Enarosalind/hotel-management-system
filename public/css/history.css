@@ -1,0 +1,68 @@
+#container-hd {
+    padding: 10px;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container {
+    background-image: url('../assets/mountain.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#history-box {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    height: auto;
+    width: 75vw;
+    min-width: 600px;
+    background-color: blue;
+    border-radius: 4px;            
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Ubuntu', sans-serif;
+    color: #ffffff;
+}
+
+.history-table th, 
+.history-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #1363DF;
+}
+
+.history-table th {
+    color: #C5FFF8;
+    font-size: 16px;
+    border-bottom: 2px solid #C5FFF8;
+    font-weight: 500;
+}
+
+.history-table tbody tr:hover {
+    background-color: rgba(19, 99, 223, 0.2);
+}
+
+.status {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.status.completed {
+    background-color: #2ec4b6;
+    color: #ffffff;
+}
+
+.status.cancelled {
+    background-color: #FF3B3B;
+    color: #DFF6FF;
+}

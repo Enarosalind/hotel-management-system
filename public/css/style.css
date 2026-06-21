@@ -1,0 +1,39 @@
+* {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #FFFBA7;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navbar ol {
+    list-style-type: none;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navbar-item {
+    padding: 10px;
+}
+
+.navbar-item a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.navbar-item a:hover {
+    color: #FF5B5B;
+}

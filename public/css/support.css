@@ -1,0 +1,81 @@
+#container-hd {
+    padding: 10px;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container {
+    background-image: url('../assets/mountain.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#support-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    height: auto;
+    width: 45vw;
+    min-width: 400px;
+    background-color: blue;
+    border-radius: 4px;            
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    color: #C5FFF8;
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 8px;            
+}
+
+select {
+    border: 2px solid #1363DF;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 4px;
+    padding: 5px 10px;
+    outline: none;
+    height: 40px;
+    width: 100%;                   
+}
+
+textarea {
+    border: 2px solid #1363DF;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 4px;
+    padding: 10px;
+    outline: none;
+    height: 140px;
+    width: 100%;                   
+    font-family: 'Ubuntu', sans-serif;
+    resize: none;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 160px;                  
+    height: 40px;                  
+    background-color: #FF3B3B;
+    color: #DFF6FF;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    align-self: flex-end;
+}
+
+input[type=submit]:hover {
+    background-color: #d62828;
+}
