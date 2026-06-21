@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reservation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ol>
+                <li class="navbar-item"><a href="home.html">Home</a></li>
+                <li class="navbar-item"><a href="reservation.html" class="active">Reservation</a></li>
+                <li class="navbar-item"><a href="billing.html">Billing Page</a></li>
+                <li class="navbar-item"><a href="history.html">History</a></li>
+                <li class="navbar-item"><a href="bookings.html">Bookings</a></li>
+                <li class="navbar-item"><a href="support.html">Contact Support</a></li>
+            </ol>
+        </nav>
+    </header>
+    <div class="container">
+        <h1 id="container-hd">Book a Room</h1>
+        <form id="form-box" action="#" method="post">
+            
+            <div class="form-group">
+                <label for="checkin">Check-in Date</label>
+                <input type="date" id="checkin" required>
+            </div>
+
+            <div class="form-group">
+                <label for="checkout">Check-out Date</label>
+                <input type="date" id="checkout" required>
+            </div>
+
+            <div class="form-group">
+                <label for="room-type">Room Category</label>
+                <select id="room-type" required>
+                    <option value="deluxe">Matrix Deluxe Suite</option>
+                    <option value="executive">Executive Cyber Room</option>
+                    <option value="standard">Standard Digital Room</option>
+                </select>
+            </div>
+
+            <input type="submit" value="Confirm Reservation">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('form-box').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const roomType = document.getElementById('room-type').value;
+
+            const date1 = new Date(checkin);
+            const date2 = new Date(checkout);
+            const timeDiff = Math.abs(date2 - date1);
+            const nights = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)) || 1;
+
+            let roomRate = 4000; 
+            let roomName = "Standard Digital Room";
+
+            if (roomType === 'deluxe') {
+                roomRate = 6000;
+                roomName = "Matrix Deluxe Suite";
+            } else if (roomType === 'executive') {
+                roomRate = 5000;
+                roomName = "Executive Cyber Room";
+            }
+
+            localStorage.setItem('roomName', roomName);
+            localStorage.setItem('nights', nights);
+            localStorage.setItem('roomRate', roomRate);
+
+            localStorage.setItem('checkin', checkin);
+            localStorage.setItem('checkout', checkout);
+
+            window.location.href = "billing.html";
+        });
+    </script>
+</body>
+</html>

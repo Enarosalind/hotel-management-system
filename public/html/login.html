@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <form id="form-box" action="/login" method="post">
+
+            <label style="font-size: 24px; margin-top: 5px; margin-bottom: 15px; align-self: center;">Log In</label>
+
+            <label for="addr">Email Address</label>
+            <input type="email" name="addr" id="addr" placeholder="enter email here..." required>
+
+            <label for="psw">Password</label>
+            <input type="password" name="psw" id="psw" placeholder="enter password here..." required>
+
+            <input type="submit" value="Login">
+
+            <p style="font-family: 'Ubuntu', sans-serif; font-size: 14px; margin-top: 20px; color: #C5FFF8;">
+                New user? <a href="register.html" style="color: #DFF6FF; text-decoration: none;">Register here</a>
+            </p>
+
+        </form>
+    </div>
+    <script>
+        document.getElementById('form-box').addEventListener('submit', function (event) {
+            event.preventDefault();
+            window.location.href = "home.html";
+        });
+    </script>
+</body>
+
+</html>
