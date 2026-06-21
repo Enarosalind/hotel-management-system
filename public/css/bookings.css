@@ -1,0 +1,111 @@
+#container-hd {
+    padding: 10px;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container {
+    background-image: url('../assets/mountain.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#bookings-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    height: auto;
+    width: 60vw;
+    min-width: 500px;
+    background-color: blue;
+    border-radius: 4px;            
+}
+
+.booking-card {
+    background-color: rgba(19, 99, 223, 0.3);
+    border: 2px solid #1363DF;
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+}
+
+.booking-details h3 {
+    margin: 0 0 5px 0;
+    color: #C5FFF8;
+    font-size: 20px;
+}
+
+.booking-meta {
+    font-size: 13px;
+    color: #DFF6FF;
+    margin: 0 0 15px 0;
+}
+
+.booking-dates {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.booking-dates span {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #C5FFF8;
+    display: block;
+}
+
+.booking-dates p {
+    margin: 3px 0 0 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.booking-dates .arrow {
+    color: #FF3B3B;
+    font-size: 18px;
+}
+
+.booking-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-badge.upcoming {
+    background-color: #1363DF;
+    color: white;
+    border: 1px solid #C5FFF8;
+}
+
+.btn-action.cancel {
+    background-color: #FF3B3B;
+    color: #DFF6FF;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.btn-action.cancel:hover {
+    background-color: #d62828;
+}
